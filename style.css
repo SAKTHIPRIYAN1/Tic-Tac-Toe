@@ -183,6 +183,8 @@ button{
 .mnu_di_tp{
     animation: mn 1s ease-in-out forwards;
     display: flex;
+    border: 1px solid white;
+    
 }
 .mnu_msg{
     position: fixed;
@@ -197,8 +199,9 @@ button{
 
 .mnu_msg_lt{
    
-    animation: lt 1.2s ease-in-out forwards;
+    animation: lt 1s ease-in-out forwards;
     display: flex;
+    border: 1px solid white;
 }
 
 @keyframes lt {
@@ -216,8 +219,9 @@ button{
 }
 
 .mnu_msg_rt{
-    animation: rt 1.2s ease-in-out forwards;
+    animation: rt 1s ease-in-out forwards;
     display: flex;
+    
 }
 
 @keyframes rt {
