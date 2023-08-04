@@ -71,6 +71,11 @@ function start(){
 function clo(){
     pop.style="display:none"
     console.log("cls")
+    if(against==null){
+    against=mode_all[0]
+    console.log(against)
+    }
+
 }
 
 let s=document.querySelectorAll(".s")
@@ -79,7 +84,7 @@ function choose(n){
     s[n].classList.add("none")
     s[n+1].classList.remove("none")
 }
-let against;
+let against=null;
 function mode(n){
     against=mode_all[n]
     console.log(against)
