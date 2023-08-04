@@ -61,5 +61,28 @@ lt_ar.addEventListener('click',()=>{
     mnu_msg.classList.add("mnu_msg_rt")
 })
 
-/// complete the menu bar for mobileee....
+
+
+let pop=document.querySelector(".pop")
+function start(){
+    pop.style="display:flex"
+}
+
+function clo(){
+    pop.style="display:none"
+    console.log("cls")
+}
+
+let s=document.querySelectorAll(".s")
+let mode_all=['player','computer'];
+function choose(n){
+    s[n].classList.add("none")
+    s[n+1].classList.remove("none")
+}
+let against;
+function mode(n){
+    against=mode_all[n]
+    console.log(against)
+    clo()
+}
 

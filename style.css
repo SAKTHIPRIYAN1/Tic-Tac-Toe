@@ -341,6 +341,9 @@ button{
 #spk{
     margin-left: 0px;
 }
+.con{
+    width: 90vw;
+}
 }
 .det_h{
     /* height: 30px; */

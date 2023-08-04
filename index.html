@@ -8,7 +8,7 @@
     <link id='fa' rel="shortcut icon" href="lg2.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="start()">
     <header id="head">
         <i class="fa-solid fa-bars" id="mnu"></i>
         <button  class="h_b" id="abt">About</button>
@@ -88,14 +88,17 @@
     <div class="pop">
         <div class="con">
             <div class="s">
-            <i class="fa-solid fa-circle-xmark" id="cl"></i>
-            <div class="ques">
-                <p class="ch">choose opponent</p>
-            <button style="margin-left: 40px;">PLAYER</button>
-            <button style="margin-left: 40px;">COMPUTER</button>
+            <button onclick="choose(0)">Start game</button>
             </div>
-            
-            </div>
+
+            <div class="s none">
+                <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
+                <div class="ques">
+                    <p class="ch">choose opponent</p>
+                <button style="margin-left: 40px;" onclick="mode(0)">PLAYER</button>
+                <button style="margin-left: 40px;" onclick="mode(1)">COMPUTER</button>
+                </div>
+                </div>
 
         </div>
     </div>
