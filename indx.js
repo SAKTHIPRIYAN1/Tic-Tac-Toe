@@ -37,6 +37,7 @@ x.addEventListener('click',()=>{
     mnu_div.classList.add("mnu_di_dn")
 })
 let mnu_msg=document.querySelector(".mnu_msg");
+
 function det(n){
 
     
