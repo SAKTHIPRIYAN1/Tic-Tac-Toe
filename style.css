@@ -317,8 +317,7 @@ button{
     width: 100%;
     background-color: rgb(0, 2, 15);
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    
 }
 
 .h_b_{
@@ -343,3 +342,46 @@ button{
     margin-left: 0px;
 }
 }
+.det_h{
+    /* height: 30px; */
+    font-size: 35px;
+    color: #2ec8bb;
+    margin-right: auto;
+    margin-left: auto;
+    justify-self: center;
+}
+.det_h:hover{
+    text-decoration: underline;
+}
+.det_con{
+    height: 95%;
+    margin-top:15%;
+    width: 100%;
+    display: flex;
+    /* text-align: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: start;
+    /* background-color: #05a7c4; */
+}
+.none{
+    display: none;
+}
+.abt{
+    font-size: 18px;
+}
+.li{
+    margin-top: 25px;
+}
+ul {
+    list-style: none;
+  }
+  
+  ul li::before {
+    content: "\2022";
+    color: red;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }

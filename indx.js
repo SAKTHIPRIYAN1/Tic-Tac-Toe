@@ -38,11 +38,21 @@ x.addEventListener('click',()=>{
 })
 let mnu_msg=document.querySelector(".mnu_msg");
 
+let det_con=document.querySelectorAll(".det_con")
+
 function det(n){
 
     
     mnu_msg.classList.add("mnu_msg_lt")
     mnu_msg.classList.remove("mnu_msg_rt")
+    for(let i=0;i<det_con.length;i++){
+        if(n==i){
+            det_con[i].classList.remove("none")
+        }
+        else{
+            det_con[i].classList.add("none")
+        }
+    }
 }
 
 let lt_ar=document.getElementById("lt_ar")
@@ -50,3 +60,6 @@ lt_ar.addEventListener('click',()=>{
     mnu_msg.classList.remove("mnu_msg_lt");
     mnu_msg.classList.add("mnu_msg_rt")
 })
+
+/// complete the menu bar for mobileee....
+
