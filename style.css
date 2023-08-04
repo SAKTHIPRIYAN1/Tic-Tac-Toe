@@ -91,7 +91,7 @@ button{
 .cll{
 
     background-color:black;
-    border: 1px solid;
+    border: 1px solid rgb(13, 188, 188);
     border-top: 0px;
     height: 150px;
    
@@ -119,18 +119,27 @@ button{
     display: none;
 }
 #mnu{
-    zoom: 2;
+    zoom: 1.7;
+    display: none;
+}
+.mnu_di{
+   
+    justify-content: space-around;
+    background-color: #05a7c4;
+    position: fixed;
     display: none;
 }
 #spk{
-    zoom: 1.7;
+    zoom: 1.6;
     margin-left: 40px;
+    width: 26px;
     
 }
-#spk:hover{
-   
-    text-shadow: 0px 0px 3px aqua;
+#mnu:hover,#spk:hover{
     cursor: pointer;
+}
+#spk:active,#mnu:active{
+    transform:scale(0.9);
 }
 .con{
     background-color: black;
@@ -169,7 +178,55 @@ button{
     transform: scale(0.98);
     opacity: 0.9;
 }
+.mnu_di_tp{
+    animation: mn 1s ease-in-out forwards;
+    display: flex;
+}
+.mnu_di_dn{
+    animation: dn 1s ease-in-out forwards;
+    display: flex;
+}
+#x{
+    position: fixed;
+    display: none;
+    zoom: 1.5;
+    top: 20px;
+    left: 20px;
 
+}
+/* #x:hover{
+    color: red;
+} */
+#x:active{
+    transform: scale(0.9);
+    color:red;
+}
+
+@keyframes mn {
+    0%{
+        top: 1000px;
+        opacity: 1;
+    }
+    100%{
+        top: 0px;
+        opacity: 1;
+        z-index: 111;
+    }
+    
+}
+
+@keyframes dn {
+    0%{
+        top: 0px;
+        opacity: 1;
+    }
+    100%{
+        top: 1000px;
+        opacity: 1;
+        z-index: -11;
+    }
+    
+}
 @media screen and (max-width: 760px){
     #tp{
         margin-right: 0%;
@@ -179,6 +236,25 @@ button{
     height: 120px;
     width: 120px;
 }  
+.mnu_di{
+    /* display: flex; */
+    top: 80px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(1, 7, 13);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* opacity: 0; */
+
+
+}
+
+.h_b_{
+  width: 200px;
+  margin-top: 10px;
+}
 
 .brd{
     height: 360px;

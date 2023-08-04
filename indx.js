@@ -14,3 +14,24 @@ spk.addEventListener("click",()=>{
         mute=false 
     }
 })
+/////making the menu come from bottom while clicking the menu icon....
+let mnu=document.getElementById("mnu")
+let mnu_div=document.querySelector(".mnu_di")
+mnu.addEventListener("click",()=>{
+    mnu_div.classList.remove("mnu_di_dn")
+    console.log("mnu clickedd...")
+    mnu_div.classList.add("mnu_di_tp")
+})
+
+////making the x mark display after the menu animation..........
+
+let x=document.getElementById("x")
+mnu_div.addEventListener("animationend",function(){
+    x.style="display:block;"
+})
+
+//// quit the menu bar while clicking x..........
+x.addEventListener('click',()=>{
+    mnu_div.classList.remove("mnu_di_tp");
+    mnu_div.classList.add("mnu_di_dn")
+})
