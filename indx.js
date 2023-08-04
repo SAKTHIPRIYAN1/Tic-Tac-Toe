@@ -21,6 +21,7 @@ mnu.addEventListener("click",()=>{
     mnu_div.classList.remove("mnu_di_dn")
     console.log("mnu clickedd...")
     mnu_div.classList.add("mnu_di_tp")
+   
 })
 
 ////making the x mark display after the menu animation..........
@@ -34,4 +35,17 @@ mnu_div.addEventListener("animationend",function(){
 x.addEventListener('click',()=>{
     mnu_div.classList.remove("mnu_di_tp");
     mnu_div.classList.add("mnu_di_dn")
+})
+let mnu_msg=document.querySelector(".mnu_msg");
+function det(n){
+
+    
+    mnu_msg.classList.add("mnu_msg_lt")
+    mnu_msg.classList.remove("mnu_msg_rt")
+}
+
+let lt_ar=document.getElementById("lt_ar")
+lt_ar.addEventListener('click',()=>{
+    mnu_msg.classList.remove("mnu_msg_lt");
+    mnu_msg.classList.add("mnu_msg_rt")
 })
