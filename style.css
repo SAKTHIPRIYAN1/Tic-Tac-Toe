@@ -99,12 +99,12 @@ button{
     background-color:black;
     border: 1px solid rgb(13, 188, 188);
     border-top: 0px;
-    height: 150px;
+    height: 120px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
+    width: 120px;
 }
 .cll:hover{
     cursor: pointer;
@@ -118,8 +118,8 @@ button{
     content: '';
     color: #05a7c4;
     background-color: white;
-    height: 100px;
-    width: 15px;
+    height: 90px;
+    width: 10px;
 }
 
 .brd_x .cll:hover:not(.cll_x):not(.cll_cir)::after,
@@ -147,15 +147,15 @@ button{
     content: '';
     color: #05a7c4;
     background-color: white;
-    height: 100px;
-    width: 100px;
+    height: 85px;
+    width: 85px;
     border-radius: 50%;
 }
 .cll_cir::after,
 .brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::after
 {
-    height: 75px;
-    width: 75px;
+    height: 70px;
+    width: 70px;
     background-color: black;
 }
 
@@ -214,7 +214,7 @@ button{
     justify-content: center;
     flex-direction: row;
 }
-.s{
+.s,.win_msg{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -364,8 +364,8 @@ button{
     }
 
 .cll{
-    height: 120px;
-    width: 120px;
+    height: 110px;
+    width: 110px;
 }  
 .mnu_di{
     
@@ -397,8 +397,8 @@ button{
 }
 
 .brd{
-    height: 360px;
-    width: 360px;
+    height: 330px;
+    width: 330px;
 }
 #head{
     justify-content: space-between;
@@ -439,6 +439,33 @@ button{
     font-size: 18px;
     width: 90%;
     /* background-color: #05a7c4; */
+}
+.cll_cir::before,.cll_cir::after,
+.brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::after,
+.brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::before
+{
+    
+    height: 80px;
+    width: 80px;
+   
+}
+.cll_cir::after,
+.brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::after
+{
+    height: 65px;
+    width: 65px;
+    background-color: black;
+}
+.cll_x::before,.cll_x::after,
+.brd_x .cll:hover:not(.cll_x):not(.cll_cir):after,
+.brd_x .cll:hover:not(.cll_x):not(.cll_cir)::before{
+    display: flex;
+    position: absolute;
+    content: '';
+    color: #05a7c4;
+    background-color: white;
+    height: 90px;
+    width: 10px;
 }
 }
  .det_h{
