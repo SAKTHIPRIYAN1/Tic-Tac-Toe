@@ -364,8 +364,8 @@ button{
     }
 
 .cll{
-    height: 110px;
-    width: 110px;
+    height: 100px;
+    width: 100px;
 }  
 .mnu_di{
     
@@ -397,8 +397,8 @@ button{
 }
 
 .brd{
-    height: 330px;
-    width: 330px;
+    height: 300px;
+    width: 300px;
 }
 #head{
     justify-content: space-between;
@@ -445,15 +445,15 @@ button{
 .brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::before
 {
     
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
    
 }
 .cll_cir::after,
 .brd_cir .cll:hover:not(.cll_x):not(.cll_cir)::after
 {
-    height: 65px;
-    width: 65px;
+    height: 55px;
+    width: 55px;
     background-color: black;
 }
 .cll_x::before,.cll_x::after,
@@ -464,8 +464,8 @@ button{
     content: '';
     color: #05a7c4;
     background-color: white;
-    height: 90px;
-    width: 10px;
+    height: 80px;
+    width: 9px;
 }
 }
  .det_h{

@@ -109,10 +109,10 @@ function mode(n){
 //  THE GAME LOGICCC>>>>>>
 
 // chooose mode..(finished....)
-// click event...
-// switch turns...
-// check win...
-//  check draw...
+// click event...(finished....)
+// switch turns...(finished....)
+// check win...(finished....)
+//  check draw...(finished....)
 
 
 //// the winning combinationsss.....
@@ -131,7 +131,7 @@ const win_com=[
 const x_cls='cll_x'
 const cir_cls='cll_cir'
 let circle_cls=true;
-
+let win_count=0;
 
 // function when the player chooses that he wants to play against a player...../
 let cellelements=document.querySelectorAll(".cll")
@@ -171,6 +171,7 @@ function playergame(){
 
     function display_(cell,class_){
         cell.classList.add(class_)
+        win_count++
         console.log("a event occured...")
     }
 
@@ -208,17 +209,27 @@ function playergame(){
 }
 let win_div=document.querySelector('.win_msg')
 function endgame(class_){
-    let winner;
-  if(class_=='cll_cir'){
-    winner='O';
-  }
-  else{
-    winner='X';
-  }
-   win_div.innerHTML=`
+    let winner=null;
+if(win_count==9 && winner==null){
+        win_div.innerHTML=`
                 <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
-                <h2 class='det_h'>${winner} wins the game</h2>
-   `;
+                <h2 class='det_h'>Match Draws</h2>
+   `   
+    }
+else{
+            if(class_=='cll_cir'){
+                winner='O';
+            }
+            else{
+                winner='X';
+            }
+            win_div.innerHTML=`
+                            <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
+                            <h2 class='det_h'>${winner} wins the game</h2>
+            `
+            
+            ;
+}
    start()
    choose(2)
     console.log("game ended.........");
