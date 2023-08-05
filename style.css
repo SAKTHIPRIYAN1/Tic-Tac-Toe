@@ -181,7 +181,7 @@ button{
     opacity: 0.9;
 }
 .mnu_di_tp{
-    animation: mn 1s ease-in-out forwards;
+    animation: mn 0.3s ease-in-out forwards;
     display: flex;
     border: 1px solid white;
     
@@ -199,7 +199,7 @@ button{
 
 .mnu_msg_lt{
    
-    animation: lt 1s ease-in-out forwards;
+    animation: lt 0.3s ease-in-out forwards;
     display: flex;
     border: 1px solid white;
 }
@@ -209,6 +209,7 @@ button{
       left: 1000px;
         opacity: 1;
         z-index: 112;
+        background-color: #2ec8bb;
     }
     100%{
        left: 0px;
@@ -219,7 +220,7 @@ button{
 }
 
 .mnu_msg_rt{
-    animation: rt 1s ease-in-out forwards;
+    animation: rt 0.3s ease-in-out forwards;
     display: flex;
     
 }
@@ -232,7 +233,7 @@ button{
     }
     
     100%{
-        /* left: 1000px; */
+        
         opacity: 1;
         z-index: 112;
         left: 1500px;
@@ -243,20 +244,21 @@ button{
 
 
 .mnu_di_dn{
-    animation: dn 1s ease-in-out forwards;
+    animation: dn 0.3s ease-in-out forwards;
     display: flex;
 }
 #x,#lt_ar{
     position: absolute;
-    /* display: none; */
+    /* display: none;*/
     zoom: 1.5;
     top: 20px;
     left: 20px;
 
 }
-/* #x:hover{
-    color: red;
-} */
+#x:hover,#lt_ar{
+    cursor:pointer;
+
+}
 #x:active,#lt_ar:active{
     transform: scale(0.9);
     color:red;
@@ -266,6 +268,7 @@ button{
     0%{
         top: 1000px;
         opacity: 1;
+        background-color: #2ec8bb;
     }
     100%{
         top: 0px;
