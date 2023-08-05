@@ -75,7 +75,6 @@ function clo(){
     against=mode_all[0]
     console.log(against)
     }
-
 }
 
 let s=document.querySelectorAll(".s")
@@ -87,7 +86,66 @@ function choose(n){
 let against=null;
 function mode(n){
     against=mode_all[n]
-    console.log(against)
+    // console.log(against)
+    if(against=='player'){
+        playergame()
+    }
+    else{
+        computergame()
+    }
     clo()
+}
+
+
+
+//  THE GAME LOGICCC>>>>>>
+
+// chooose mode..(finished....)
+// click event...
+// switch turns...
+// check win...
+//  check draw...
+
+
+const x_cls='cll_x'
+const cir_cls='cll_cir'
+let circle_cls=true;
+
+// function when the player chooses that he wants to play against a player...../
+let cellelements=document.querySelectorAll(".cll")
+function playergame(){
+    console.log('chooosed player game....')
+     /// to make the cell  clicked once...
+    cellelements.forEach(cell=>{
+        cell.addEventListener('click',clk_event,{once:true})
+    })
+    function clk_event(e){
+        console.log('a cell clicked.....');
+        const cell=e.target;
+        const current_cls= circle_cls?cir_cls:x_cls;
+
+        // diplay x or O while clicking......
+        display_(cell, current_cls)
+        /// to swappp the turns after clicking one cellll.....
+        swap()
+
+    }
+
+    function display_(cell,class_){
+        cell.classList.add(class_)
+        console.log("a event occured...")
+    }
+    function swap(){
+        circle_cls=!circle_cls;
+        console.log("swapped"+circle_cls)
+    }
+
+}
+
+
+// function when the player wants to play against the computer....
+
+function computergame(){
+    console.log("computer game")
 }
 
