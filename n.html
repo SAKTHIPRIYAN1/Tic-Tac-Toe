@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Default button style */
+  .button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    background-color: #3498db;
+    cursor: pointer;
+  }
+  
+  /* Selected button style */
+  .button.selected {
+    background-color: #e74c3c; /* Change to the desired selected background color */
+    color: white; /* You can customize the text color for selected state */
+  }
+</style>
+</head>
+<body>
+
+<button class="button">Button 1</button>
+<button class="button">Button 2</button>
+<button class="button">Button 3</button>
+
+<script>
+  // JavaScript to toggle the 'selected' class on button click
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+    });
+  });
+</script>
+
+</body>
+</html>
