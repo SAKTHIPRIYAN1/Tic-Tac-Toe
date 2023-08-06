@@ -68,6 +68,8 @@ function start(){
     pop.style="display:flex"
 }
 
+let st=document.querySelector('.st')
+st.addEventListener('click',clo)
 function clo(){
     pop.style="display:none"
     console.log("cls")
@@ -77,33 +79,35 @@ function clo(){
     }
 }
 
-let s=document.querySelectorAll(".s")
+let s=document.querySelector(".s")
 let mode_all=['player','computer'];
-function choose(n){
-   
-    
-    for(let i=0;i<s.length;i++){
-        if(n==i){
-            s[n].classList.remove("none")
-        }
-        else{
-            s[i].classList.add("none")
-        }
-    }
-}
-let against=null;
+
+
+let selected_button=document.querySelectorAll(".bt")
+// selected_button[0].click()
+let against='player';
 function mode(n){
     against=mode_all[n]
-    // console.log(against)
+
+    if(against=='player'){
+       selected_button[0].classList.add("sel")
+       selected_button[1].classList.remove("sel")
+    }
+    else{
+        selected_button[1].classList.add("sel")
+       selected_button[0].classList.remove("sel")
+    }
+}
+
+
+function choose(n){
     if(against=='player'){
         playergame()
     }
     else{
         computergame()
     }
-    clo()
 }
-
 
 
 //  THE GAME LOGICCC>>>>>>
@@ -128,15 +132,42 @@ const win_com=[
     [2,4,6]
 ]
 
+
+//// to choose the x or O by the player......
+let choosed_symbol='x';
+let circle_cls=false;
+function choose_sym(n){
+    let symbol=document.querySelectorAll('.symb')
+    if(n==0){
+        choosed_symbol='x'
+        symbol[0].classList.add('sel')
+        symbol[1].classList.remove("sel")
+        circle_cls=false;
+        console.log(choosed_symbol)
+    }
+    else{
+        choosed_symbol='o'
+        symbol[1].classList.add('sel')
+        symbol[0].classList.remove("sel")
+        circle_cls=true;
+        console.log(choosed_symbol)
+    }
+
+}
+
+
 const x_cls='cll_x'
 const cir_cls='cll_cir'
-let circle_cls=true;
+
+
 let win_count=0;
 
 // function when the player chooses that he wants to play against a player...../
 let cellelements=document.querySelectorAll(".cll")
 let brd=document.querySelector(".brd")
 let temp_str=brd.innerHTML;
+
+
 function playergame(){
     console.log('chooosed player game....')
 
@@ -161,8 +192,18 @@ function playergame(){
         ///check win....
        let win= check(current_cls)
        if(win){
-        console.log('matched...')
+        console.log('matched...'+win)
         endgame(current_cls)
+       }
+      if(win_count==9 && win==false){
+        console.log("all are filled...")
+        start()
+        let win_div=document.querySelector('.win_msg')
+        win_div.classList.remove("none")
+        win_div.innerHTML=`
+                <i class="fa-solid fa-circle-xmark" onclick="cl_win()" id="cl"></i>
+                <h2 class='det_h'>Match <span class='winner'> Draws</span> </h2>
+            `
        }
 
         /// hover effect after swap...
@@ -172,7 +213,9 @@ function playergame(){
     function display_(cell,class_){
         cell.classList.add(class_)
         win_count++
+        console.log(win_count)
         console.log("a event occured...")
+
     }
 
     /// checking before winnig the game.......
@@ -207,16 +250,17 @@ function playergame(){
     }
 
 }
+
+function cl_win(){
+    win_div.classList.add("none")
+}
+
+
 let win_div=document.querySelector('.win_msg')
 function endgame(class_){
     let winner=null;
-if(win_count==9 && winner==null){
-        win_div.innerHTML=`
-                <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
-                <h2 class='det_h'>Match Draws</h2>
-   `   
-    }
-else{
+    win_div.classList.remove("none")
+
             if(class_=='cll_cir'){
                 winner='O';
             }
@@ -224,12 +268,12 @@ else{
                 winner='X';
             }
             win_div.innerHTML=`
-                            <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
-                            <h2 class='det_h'>${winner} wins the game</h2>
+                            <i class="fa-solid fa-circle-xmark" onclick="cl_win()" id="cl"></i>
+                            <h2 class='det_h'><span class='winner'>${winner}</span> wins the game</h2>
             `
             
             ;
-}
+
    start()
    choose(2)
     console.log("game ended.........");

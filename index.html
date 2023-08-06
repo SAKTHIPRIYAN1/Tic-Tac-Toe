@@ -88,20 +88,30 @@
     <div class="pop">
         <div class="con">
             <div class="s">
-            <button onclick="choose(1)">Start game</button>
-            </div>
-
-            <div class="s none">
-                <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i>
+                <p class="ch">your choice</p>
+                    <div class="choice">
+                        
+                        <div class="x_div sel symb" onclick="choose_sym(0)">X</div>
+                        <div class="o_div symb" onclick="choose_sym(1)">O</div>
+                    </div>
+            <!-- <i class="fa-solid fa-circle-xmark" onclick="clo()" id="cl"></i> -->
                 <div class="ques">
                     <p class="ch">choose opponent</p>
-                <button style="margin-left: 40px;" onclick="mode(0)">PLAYER</button>
-                <button style="margin-left: 40px;" onclick="mode(1)">COMPUTER</button>
-                </div>
-           
+                    <div class="opp">
+                <button style="margin-left: 40px;" onclick="mode(0)" class="sel bt">PLAYER</button>
+                <button style="margin-left: 40px;" onclick="mode(1)" class="bt">COMPUTER</button>
+            </div>
+            </div>
+            <p onclick="choose(1)" class="ch st" >Start game</p>
+
+       
+            </div>
+            <div class="win_msg none">
+
+            </div>
             
-                </div>
-                <div class=" s win_msg none"></div>
+
+           
         </div>
     </div>
     <script src="indx.js"></script>
