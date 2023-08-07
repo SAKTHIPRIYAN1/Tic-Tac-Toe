@@ -169,7 +169,10 @@ let temp_str=brd.innerHTML;
 
 
 function playergame(){
+    win_count=0;
     console.log('chooosed player game....')
+    // win_count=0;
+
 
     /// hovre effect initailly....
      hoverefft(circle_cls)
@@ -201,7 +204,7 @@ function playergame(){
         let win_div=document.querySelector('.win_msg')
         win_div.classList.remove("none")
         win_div.innerHTML=`
-                <i class="fa-solid fa-circle-xmark" onclick="cl_win()" id="cl"></i>
+                <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
                 <h2 class='det_h'>Match <span class='winner'> Draws</span> </h2>
             `
        }
@@ -209,6 +212,7 @@ function playergame(){
         /// hover effect after swap...
         hoverefft(circle_cls)
     }
+    
 
     function display_(cell,class_){
         cell.classList.add(class_)
@@ -268,18 +272,23 @@ function endgame(class_){
                 winner='X';
             }
             win_div.innerHTML=`
-                            <i class="fa-solid fa-circle-xmark" onclick="cl_win()" id="cl"></i>
+                            <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
                             <h2 class='det_h'><span class='winner'>${winner}</span> wins the game</h2>
             `
             
             ;
 
    start()
-   choose(2)
+//    choose()
     console.log("game ended.........");
-    brd.innerHTML=temp_str
-    playergame()
+
+    
 }
+
+function restart(){
+    location.reload();
+}
+
 
 // function when the player wants to play against the computer....
 function computergame(){
