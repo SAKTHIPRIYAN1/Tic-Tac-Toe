@@ -141,14 +141,18 @@ function choose_sym(n){
     if(n==0){
         choosed_symbol='x'
         symbol[0].classList.add('sel')
+        symbol[0].classList.remove("sel_n")
         symbol[1].classList.remove("sel")
+        symbol[1].classList.add('sel_n')
         circle_cls=false;
         console.log(choosed_symbol)
     }
     else{
         choosed_symbol='o'
         symbol[1].classList.add('sel')
+        symbol[1].classList.remove("sel_n")
         symbol[0].classList.remove("sel")
+        symbol[0].classList.add('sel_n')
         circle_cls=true;
         console.log(choosed_symbol)
     }
