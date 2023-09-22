@@ -169,7 +169,7 @@ button{
     text-shadow:0px 0px 5px  rgb(43, 214, 226);
 }
 .pop{
-    background-color: rgba(2, 77, 70, 0.311);
+    background-color: transparent;
     z-index: 12;
     position: fixed;
     top: 0px;

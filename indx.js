@@ -101,12 +101,7 @@ function mode(n){
 
 
 function choose(n){
-    if(against=='player'){
-        playergame()
-    }
-    else{
-        computergame()
-    }
+   playergame();
 }
 
 
@@ -173,6 +168,15 @@ let temp_str=brd.innerHTML;
 
 
 function playergame(){
+
+    if(against=='player'){
+        player_game()
+    }
+    else{
+        computergame()
+    }
+
+    function player_game(){
     win_count=0;
     console.log('chooosed player game....')
     // win_count=0;
@@ -289,13 +293,32 @@ function endgame(class_){
     
 }
 
+// function when the player wants to play against the computer....
+function computergame(){
+    
+    // game logic for computer game...
+    // using mini_max algorithmmm....
+
+    // 1.find empty cells...
+    // 2.check for all the possiblity...
+    // chooose the crt cell...
+
+    // check for the empty cellss....
+    let all_cell=[]
+    all_cell=brd.children;
+    let empty_cell=[];
+    
+    for(let i=0;i<all_cell.length;i++){
+        if(!all_cell[i].classList.contains('cll_cir') && !all_cell[i].classList.contains('cll_x')){
+            console.log(all_cell[i]);
+            empty_cell.push(all_cell[i]);
+        }
+    }
+
+
+}
+}
+
 function restart(){
     location.reload();
 }
-
-
-// function when the player wants to play against the computer....
-function computergame(){
-    console.log("computer game")
-}
-
