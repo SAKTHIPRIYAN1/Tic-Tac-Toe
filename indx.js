@@ -75,6 +75,7 @@ function start(){
     pop.style="display:flex"
 
     // restart();
+    // brd.innerHTML=temp;
 }
 
 let st=document.querySelector('.st')
@@ -138,6 +139,7 @@ const win_com=[
 //// to choose the x or O by the player......
 let choosed_symbol='x';
 let circle_cls=false;
+let og;
 function choose_sym(n){
     let symbol=document.querySelectorAll('.symb')
     if(n==0){
@@ -160,6 +162,7 @@ function choose_sym(n){
     }
 
 }
+og=circle_cls;
 
 
 const x_cls='cll_x'
@@ -177,10 +180,12 @@ let temp1=brd.innerHTML;
 let temp=temp1;
 
 //computer_variables...
-let ai_class,aiPlayer,huPlayer,hu_class;
+let ai_class,aiPlayer,huPlayer
+let hu_class;
 
 /// choosing the mode of the game...
 function start_game(){
+    brd.innerHTML=temp;
     if(against=='player'){
         playergame();
     }
@@ -194,6 +199,33 @@ function start_game(){
 let cells=[],orig=[0,1,2,3,4,5,6,7,8];
 let current_cls;
 let win_co;
+
+function computergame() {
+    console.log("comp player game is selected");
+    initial();
+    if(choosed_symbol=="x"){
+        huPlayer="X";
+        og=false;
+        ai_class="cll_cir"
+        hu_class='cll_x'
+        aiPlayer="O"
+    }
+    else{
+        huPlayer="O";
+        ai_class="cll_x"
+        hu_class='cll_cir'
+        og=true;
+        aiPlayer="X";
+       
+        turn(bestSpot(), aiPlayer);
+    }
+    
+    console.log(og) 
+            
+    hoverefft(og)   
+}
+
+
 function initial(){
     //1. forming the array...
     //2.creating the click events such as showing the symbols...
@@ -211,6 +243,8 @@ function initial(){
         cells.forEach(cell=> {
             cell.addEventListener("click",turn_click,{once:true})
         });
+       
+
     }
     
    
@@ -229,7 +263,7 @@ function turne(e){
 function turn_click(square){
     if (typeof orig[square.target.id] == 'number') {
 		console.log(square.target.id)
-		turn(square.target.id, "X");
+		turn(square.target.id, huPlayer);
 		if (!win()) turn(bestSpot(), aiPlayer);
 	}
 }
@@ -439,14 +473,7 @@ else{
     ,120);
 }
 
-function restart(){
-  win_div.classList.add('none')
-    circle_cls=false;
-    pop2.style="display:none"
-    hoverefft(circle_cls);
-  brd.innerHTML=temp;
-  initial()
-}
+
 
 //for the player vs player
 function playergame(){
@@ -454,21 +481,12 @@ function playergame(){
     hoverefft(circle_cls);///change the hover effect....
     console.log("player game is selected");
 }
-function computergame() {
-    initial();
-    if(choosed_symbol=="x"){
-        huPlayer="X";
-        ai_class="cll_cir"
-        hu_class='cll_x'
-        aiPlayer="O"
-    }
-    else{
-        huPlayer="O";
-        ai_class="cll_x"
-        hu_class='cll_cir'
-        aiPlayer="X";
-        hoverefft(true);
-        turn(bestSpot(), aiPlayer);
-    }
-}
 
+function restart(){
+    win_div.classList.add('none')
+      circle_cls=og;
+      pop2.style="display:none"
+      
+    brd.innerHTML=temp;
+    start_game()
+  }
