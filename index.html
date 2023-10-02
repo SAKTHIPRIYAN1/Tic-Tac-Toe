@@ -17,7 +17,7 @@
     </div>
         <div class="ic">
             <button class="h_b"  id="rul" onclick="det(1)">Rules</button>
-        <button class="h_b"  id="rec"  onclick="det(2)">Records</button>
+        <button class="h_b"  id="rec"  onclick="start()">Mode</button>
         <i  class="fa-solid fa-volume-high" id="spk"></i>
         </div>
     </header>
@@ -25,7 +25,7 @@
         <i class="fa-solid fa-x" id="x"></i>
         <button  class="h_b_" id="abt_"  onclick="det(0)" >About</button>
         <button class="h_b_" id="rul_" onclick="det(1)" >Rules</button>
-        <button class="h_b_"  id="rec_" onclick="det(2)" >Records</button>
+        <button class="h_b_"  id="rec_" onclick="start()" >Modes</button>
     </div>
     <div class="mnu_msg ">
         <i class="fa-solid fa-arrow-left" id="lt_ar"></i>
@@ -72,22 +72,22 @@
     </div>
     <main class="main">
        
-        <div class="brd ">
-            <div class="cll "></div>
-            <div class="cll  b"></div>
-            <div class="cll c"></div>
-            <div class="cll d"></div>
-            <div class="cll e"></div>
-            <div class="cll f"></div>
-            <div class="cll g"></div>
-            <div class="cll h"></div>
-            <div class="cll i"></div>
+        <div class="brd brd_x">
+            <div class="cll " id="0"></div>
+            <div class="cll  b" id="1"></div>
+            <div class="cll c" id="2"></div>
+            <div class="cll d" id="3"></div>
+            <div class="cll e" id="4"></div>
+            <div class="cll f" id="5"></div>
+            <div class="cll g" id="6"></div>
+            <div class="cll h" id="7"></div>
+            <div class="cll i" id="8"></div>
         </div>
       
     </main>
     <div class="pop">
-        <div class="con">
-            <div class="s">
+        <div class="con" >
+            <div class="s" >
                 <p class="ch">your choice</p>
                     <div class="choice">
                         
@@ -107,17 +107,15 @@
                 <button style="margin-left: 40px;" onclick="mode(1)" class="bt">COMPUTER</button>
             </div>
             </div>
-            <p onclick="choose(1)" class="ch st" >Start game</p>
+            <p  class="ch st" onclick="start_game()" >Start game</p>
 
        
             </div>
-            <div class="win_msg none">
-
-            </div>
-            
-
-           
         </div>
+
+    </div>
+
+    <div class="win_msg none">
     </div>
     <script src="indx.js"></script>
 </body>

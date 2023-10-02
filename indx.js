@@ -1,3 +1,6 @@
+
+
+
 // music on and off symboll
 
 let spk=document.getElementById("spk")
@@ -64,8 +67,14 @@ lt_ar.addEventListener('click',()=>{
 
 
 let pop=document.querySelector(".pop")
+
 function start(){
+    mnu_div.classList.remove("mnu_di_tp")
+    console.log("mnu clickedd...")
+    mnu_div.classList.add("mnu_di_dn")
     pop.style="display:flex"
+
+    restart();
 }
 
 let st=document.querySelector('.st')
@@ -100,9 +109,7 @@ function mode(n){
 }
 
 
-function choose(n){
-   playergame();
-}
+let player;
 
 
 //  THE GAME LOGICCC>>>>>>
@@ -162,163 +169,304 @@ const cir_cls='cll_cir'
 let win_count=0;
 
 // function when the player chooses that he wants to play against a player...../
-let cellelements=document.querySelectorAll(".cll")
+
 let brd=document.querySelector(".brd")
 let temp_str=brd.innerHTML;
 
+let temp1=brd.innerHTML;
+let temp=temp1;
 
-function playergame(){
+//computer_variables...
+let ai_class,aiPlayer,huPlayer,hu_class;
 
+/// choosing the mode of the game...
+function start_game(){
     if(against=='player'){
-        player_game()
+        playergame();
     }
     else{
-        computergame()
+        computergame();
     }
 
-    function player_game(){
-    win_count=0;
-    console.log('chooosed player game....')
-    // win_count=0;
+}
+///assigning the click events
 
+let cells=[],orig=[0,1,2,3,4,5,6,7,8];
+let current_cls;
+let win_co;
+function initial(){
+    //1. forming the array...
+    //2.creating the click events such as showing the symbols...
+    orig=[0,1,2,3,4,5,6,7,8];
+    win_co=0;
+    cells=document.querySelectorAll('.cll');//this is the cells of board..
+    console.log(cells);
 
-    /// hovre effect initailly....
-     hoverefft(circle_cls)
-
-     /// to make the cell  clicked once...
-    cellelements.forEach(cell=>{
-        cell.addEventListener('click',clk_event,{once:true})
-    })
-    function clk_event(e){
-        console.log('a cell clicked.....');
-        const cell=e.target;
-        const current_cls= circle_cls?cir_cls:x_cls;
-
-        // diplay x or O while clicking......
-        display_(cell, current_cls)
-
-        /// to swappp the turns after clicking one cellll.....
-        swap()
-
-        ///check win....
-       let win= check(current_cls)
-       if(win){
-        console.log('matched...'+win)
-        endgame(current_cls)
-       }
-      if(win_count==9 && win==false){
-        console.log("all are filled...")
-        start()
-        let win_div=document.querySelector('.win_msg')
-        win_div.classList.remove("none")
-        win_div.innerHTML=`
-                <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
-                <h2 class='det_h'>Match <span class='winner'> Draws</span> </h2>
-            `
-       }
-
-        /// hover effect after swap...
-        hoverefft(circle_cls)
+    if(against=='player'){
+    cells.forEach(cell=> {
+        cell.addEventListener("click",turne,{once:true})
+    });
+    }
+    else{
+        cells.forEach(cell=> {
+            cell.addEventListener("click",turn_click,{once:true})
+        });
     }
     
+   
+    
+}
 
-    function display_(cell,class_){
-        cell.classList.add(class_)
-        win_count++
-        console.log(win_count)
-        console.log("a event occured...")
+function turne(e){
+    console.log("clickedd");
+    let cell=e.target;
+    console.log(cell)
+     current_cls= circle_cls?cir_cls:x_cls;
+    // to display the symbolls
+    display(cell,current_cls);
+}
 
-    }
+function turn_click(square){
+    if (typeof orig[square.target.id] == 'number') {
+		console.log(square.target.id)
+		turn(square.target.id, huPlayer);
+		if (!win()) turn(bestSpot(), aiPlayer);
+	}
+}
 
-    /// checking before winnig the game.......
-    function check(class_){
-       return win_com.some(comb=>{
-            return comb.every(index=>{
-                return cellelements[index].classList.contains(class_)
-            }
-            )
-        })
-    }
-
-    ///ending the game....
-  
-
-
-    function swap(){
-        circle_cls=!circle_cls;
-        console.log("swapped"+circle_cls)
-    }
-
-    function hoverefft(tf){
-        brd.classList.remove("brd_x")
-        brd.classList.remove("brd_cir")
-
-        if(tf){
-            brd.classList.add("brd_cir")
+let clls;
+function turn(squareId, player) {
+        if(player=="X"){
+             clls='cll_x'
         }
         else{
-            brd.classList.add("brd_x")
+             clls='cll_cir'
         }
+    current_cls= clls;
+    console.log(squareId)
+	orig[squareId] = player;
+	console.log(orig)
+    console.log( player +" "+clls)
+	display_(squareId,clls)
+}
+
+function display_(cell_id,clas){
+    console.log("cell_id " + cell_id)
+    let cell=document.getElementById(cell_id)
+    cell.classList.add(clas);
+    console.log(cell)
+    win_co++;
+
+    win(current_cls);
+}
+function display(cell,clas){
+    cell.classList.add(clas);
+    console.log(cell)
+    win_co++;
+//to swap...
+    against=="player"
+    swap();
+    
+    win(current_cls);
+    
+}
+function bestSpot(){
+    return minimax(orig, aiPlayer).index;
+    console.log('best spot....')
+}
+
+
+function emptySquares() {
+	return orig.filter(s => typeof s == 'number');
+}
+
+function minimax(newBoard, player) {
+	var availSpots = emptySquares();
+
+	if (checkWin(newBoard, huPlayer)) {
+		return {score: -10};
+	} else if (checkWin(newBoard, aiPlayer)) {
+		return {score: 10};
+	} else if (availSpots.length === 0) {
+		return {score: 0};
+	}
+	var moves = [];
+	for (var i = 0; i < availSpots.length; i++) {
+		var move = {};
+		move.index = newBoard[availSpots[i]];
+		newBoard[availSpots[i]] = player;
+
+		if (player == aiPlayer) {
+			var result = minimax(newBoard, huPlayer);
+			move.score = result.score;
+		} else {
+			var result = minimax(newBoard, aiPlayer);
+			move.score = result.score;
+		}
+
+		newBoard[availSpots[i]] = move.index;
+
+		moves.push(move);
+	}
+
+	var bestMove;
+	if(player === aiPlayer) {
+		var bestScore = -10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score > bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	} else {
+		var bestScore = 10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score < bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
+	// console.log(moves)
+	return moves[bestMove];
+	
+}
+
+function checkWin(board, player) {
+	let plays = board.reduce((a, e, i) =>
+		(e === player) ? a.concat(i) : a, []);
+	let gameWon = null;
+	for (let [index, win] of win_com.entries()) {
+		if (win.every(elem => plays.indexOf(elem) > -1)) {
+			gameWon = {index: index, player: player};
+			break;
+		}
+	}
+	// console.log(gameWon)
+
+	return gameWon;
+	
+}
+
+function swap(){
+    ///changing the hover effect....
+    
+    circle_cls=!circle_cls;
+    console.log("swapped"+circle_cls);
+
+    hoverefft(circle_cls);
+}
+
+
+//// changing the hover_effect....
+function hoverefft(tf){
+    brd.classList.remove("brd_x")
+    brd.classList.remove("brd_cir")
+
+    if(tf){
+        brd.classList.add("brd_cir")
+    }
+    else{
+        brd.classList.add("brd_x")
+    }
+}
+
+function win(current_cls){
+    console.log('win_checked')
+
+    let winn=check(current_cls);
+    if(winn){
+        endgame(current_cls);
+        return 1;
     }
 
+    else if(win_co==9){
+        endgame(null)
+        return 1;
+    }
+    return false;
+    
 }
 
-function cl_win(){
-    win_div.classList.add("none")
-}
+/// checking for match with win combos by comparing class in cells...
+function check(class_){
+    let cellelements=document.querySelectorAll(".cll")
+    return win_com.some(comb=>{
+         return comb.every(index=>{
+             return cellelements[index].classList.contains(class_)
+         }
+         )
+     })
+ }
 
-
+///ending the game by showing the end message...
 let win_div=document.querySelector('.win_msg')
 function endgame(class_){
     let winner=null;
-    win_div.classList.remove("none")
-
-            if(class_=='cll_cir'){
-                winner='O';
-            }
-            else{
-                winner='X';
-            }
-            win_div.innerHTML=`
-                            <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
-                            <h2 class='det_h'><span class='winner'>${winner}</span> wins the game</h2>
-            `
-            
-            ;
-
-   start()
-//    choose()
-    console.log("game ended.........");
-
-    
-}
-
-// function when the player wants to play against the computer....
-function computergame(){
-    
-    // game logic for computer game...
-    // using mini_max algorithmmm....
-
-    // 1.find empty cells...
-    // 2.check for all the possiblity...
-    // chooose the crt cell...
-
-    // check for the empty cellss....
-    let all_cell=[]
-    all_cell=brd.children;
-    let empty_cell=[];
-    
-    for(let i=0;i<all_cell.length;i++){
-        if(!all_cell[i].classList.contains('cll_cir') && !all_cell[i].classList.contains('cll_x')){
-            console.log(all_cell[i]);
-            empty_cell.push(all_cell[i]);
-        }
+    if(against=='player'){
+    if(class_=='cll_cir'){
+        winner='O';
     }
-
-
+    else if(class_=='cll_x'){
+        winner='X';
+    }
+    }
+else{
+    if(class_==ai_class){
+        winner='COMP';
+    }
+    else if(class_==hu_class){
+        winner='You';
+    }
 }
+  console.log(win_co +" "+winner)
+  if(winner==null && win_co==9){
+    win_div.innerHTML=` 
+                        <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
+                        <h2 class='det_h'>Match<span class='winner'> draws</span> </h2>
+                        `
+  }
+  else{
+   win_div.innerHTML=` 
+                        <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
+                        <h2 class='det_h'><span class='winner'>${winner}</span> wins the game</h2>
+                              `
+  }
+    console.log("game ended.........");
+    setTimeout(()=>{
+    win_div.classList.remove('none')}
+    ,120);
 }
 
 function restart(){
-    location.reload();
+  win_div.classList.add('none')
+    circle_cls=false;
+    hoverefft(circle_cls);
+  brd.innerHTML=temp;
+  initial()
 }
+
+//for the player vs player
+function playergame(){
+    initial();/// click+display+swap...
+    hoverefft(circle_cls);///change the hover effect....
+    console.log("player game is selected");
+}
+function computergame() {
+    initial();
+    if(choosed_symbol=="x"){
+        huPlayer="X";
+        ai_class="cll_cir"
+        hu_class='cll_x'
+        aiPlayer="O"
+    }
+    else{
+        huPlayer="O";
+        ai_class="cll_x"
+        hu_class='cll_cir'
+        aiPlayer="X";
+        hoverefft(true);
+        turn(bestSpot(), aiPlayer);
+    }
+}
+

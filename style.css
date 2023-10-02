@@ -366,11 +366,14 @@ button{
     /* margin-top: 20px; */
     padding: 10px;
     border-radius: 5px;
+    color: #05a7c4;
     text-shadow: none;
     border: 1px solid white;
 }
 .st:hover{
     color: aqua;
+    box-shadow: 0px 0px 10px aqua;
+    border-color: aqua;
     cursor: pointer;
    
 }
@@ -381,6 +384,7 @@ button{
     height:80px;
     align-items: center;
     width:max-content;
+    max-width: 300px;
     padding-left: 10px;
     padding-right:10px ;
     background-color: #043733;
@@ -404,11 +408,11 @@ button{
     margin-left: 5px;
 }
 .sel{
-    color: white;
+    color: aqua;
     background-color: #00151b;
     /* opacity: 0.7; */
     filter: grayscale(0.5);
-    border: 2px solid aqua;
+    border: 2px solid rgb(174, 203, 208);
     box-shadow: 5px 5px 5px black;
 }
 
@@ -472,9 +476,12 @@ button{
 .win_msg{
     position: absolute;
     background-color: #000000;
-    height: 100%;
-    width: 100%;
+    border: 1px white solid;
+    height: 70%;
+    width:50%;
     display: flex ;
+    min-width: 310px;
+    margin-top: 120px;
     justify-content: center;
     align-items: center;
 }
@@ -536,8 +543,13 @@ button{
     margin-left: 0px;
 }
 .con{
+    /* border: none; */
     height: 75vh;
     width: 90vw;
+}
+.win_msg{
+    margin-top: 300px;
+    height: 40%;
 }
 .det_h{
     /* height: 30px; */
@@ -599,7 +611,7 @@ button{
     border: 1px solid white;
 }
 .st:hover{
-    color: red;
+    box-shadow: 0px 0px 8px aqua;
     cursor: pointer;
    
 }
