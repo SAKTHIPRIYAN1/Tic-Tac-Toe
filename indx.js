@@ -67,14 +67,14 @@ lt_ar.addEventListener('click',()=>{
 
 
 let pop=document.querySelector(".pop")
-
+let pop2=document.querySelector(".pop2")
 function start(){
     mnu_div.classList.remove("mnu_di_tp")
     console.log("mnu clickedd...")
     mnu_div.classList.add("mnu_di_dn")
     pop.style="display:flex"
 
-    restart();
+    // restart();
 }
 
 let st=document.querySelector('.st')
@@ -229,7 +229,7 @@ function turne(e){
 function turn_click(square){
     if (typeof orig[square.target.id] == 'number') {
 		console.log(square.target.id)
-		turn(square.target.id, huPlayer);
+		turn(square.target.id, "X");
 		if (!win()) turn(bestSpot(), aiPlayer);
 	}
 }
@@ -245,7 +245,7 @@ function turn(squareId, player) {
     current_cls= clls;
     console.log(squareId)
 	orig[squareId] = player;
-	console.log(orig)
+	// console.log(orig)
     console.log( player +" "+clls)
 	display_(squareId,clls)
 }
@@ -254,7 +254,7 @@ function display_(cell_id,clas){
     console.log("cell_id " + cell_id)
     let cell=document.getElementById(cell_id)
     cell.classList.add(clas);
-    console.log(cell)
+    // console.log(cell)
     win_co++;
 
     win(current_cls);
@@ -272,7 +272,7 @@ function display(cell,clas){
 }
 function bestSpot(){
     return minimax(orig, aiPlayer).index;
-    console.log('best spot....')
+    // console.log('best spot....')
 }
 
 
@@ -413,13 +413,13 @@ function endgame(class_){
     }
 else{
     if(class_==ai_class){
-        winner='COMP';
+        winner='Comp';
     }
     else if(class_==hu_class){
         winner='You';
     }
 }
-  console.log(win_co +" "+winner)
+//   console.log(win_co +" "+winner)
   if(winner==null && win_co==9){
     win_div.innerHTML=` 
                         <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
@@ -429,11 +429,12 @@ else{
   else{
    win_div.innerHTML=` 
                         <i class="fa-solid fa-circle-xmark" onclick="restart()" id="cl"></i>
-                        <h2 class='det_h'><span class='winner'>${winner}</span> wins the game</h2>
+                        <h2 class='det_h'><span class='winner'>${winner}</span> wins </h2>
                               `
   }
     console.log("game ended.........");
     setTimeout(()=>{
+        pop2.style="display:flex"
     win_div.classList.remove('none')}
     ,120);
 }
@@ -441,6 +442,7 @@ else{
 function restart(){
   win_div.classList.add('none')
     circle_cls=false;
+    pop2.style="display:none"
     hoverefft(circle_cls);
   brd.innerHTML=temp;
   initial()

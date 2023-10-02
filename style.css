@@ -168,14 +168,16 @@ button{
     text-transform: uppercase;
     text-shadow:0px 0px 5px  rgb(43, 214, 226);
 }
-.pop{
-    background-color: transparent;
+.pop,.pop2{
+    background-color: black;
     z-index: 12;
     position: fixed;
     top: 0px;
-    display: flex;
-    align-items: center;
+    display: flex ;
+    min-width: 310px;
+    align-self: center;
     justify-content: center;
+    align-items: center;
     left: 0px;
     right: 0px;
     bottom: 0px;
@@ -473,15 +475,19 @@ button{
     color: white;
     opacity: 0.3;
 }
+.pop2{
+    place-items: center;
+}
 .win_msg{
     position: absolute;
     background-color: #000000;
     border: 1px white solid;
-    height: 70%;
+    height: 400px;
     width:50%;
     display: flex ;
     min-width: 310px;
-    margin-top: 120px;
+    margin-top: 70px;
+    align-self: center;
     justify-content: center;
     align-items: center;
 }
@@ -548,8 +554,8 @@ button{
     width: 90vw;
 }
 .win_msg{
-    margin-top: 300px;
-    height: 40%;
+    margin-top: 70px;
+    /* height: 40%; */
 }
 .det_h{
     /* height: 30px; */
